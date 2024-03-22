@@ -18,7 +18,7 @@ car = path('car.gif')
 tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
-
+state = {'mark': None, 'taps': 0}  # Añadir contador de taps aquí
 
 def square(x, y):
     """Draw white square with black outline at (x, y)."""
@@ -47,6 +47,7 @@ def tap(x, y):
     """Update mark and hidden tiles based on tap."""
     spot = index(x, y)
     mark = state['mark']
+    state['taps'] += 1  # Incrementar contador de taps
 
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
@@ -76,6 +77,12 @@ def draw():
         goto(x + 2, y)
         color('black')
         write(tiles[mark], font=('Arial', 30, 'normal'))
+
+    # Muestra el número de taps en la esquina superior derecha
+    goto(160, 160)  # Ajusta la posición según sea necesario
+    color('black')
+    write(f"Taps: {state['taps']}", font=('Arial', 20, 'normal'))
+
 
     update()
     ontimer(draw, 100)
