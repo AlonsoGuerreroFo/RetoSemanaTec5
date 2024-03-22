@@ -83,6 +83,12 @@ def draw():
     color('black')
     write(f"Taps: {state['taps']}", font=('Arial', 20, 'normal'))
 
+    # Comprobar si todos los cuadros están descubiertos
+    if all(not h for h in hide):
+        # Todos los cuadros han sido destapados
+        goto(-100, 0)  # Ajusta la posición según sea necesario para el mensaje
+        color('green')
+        write("¡Todos los cuadros descubiertos!", font=('Arial', 20, 'bold'))
 
     update()
     ontimer(draw, 100)
