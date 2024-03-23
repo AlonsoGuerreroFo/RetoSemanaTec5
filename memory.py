@@ -15,7 +15,7 @@ from turtle import *
 from freegames import path
 
 car = path('car.gif')
-tiles = list(range(32)) * 2
+tiles = tiles = ['★', '☆', '♡', '♢', '♧', '♤', '✓', '✕', '☯', '☸', '☮', '♨', '✈', '♔', '♕', '♖', '♗', '♘', '♙', '☀', '☁', '❀', '✿', '☂', '☃', '♚', '♛', '♜', '♝', '♞', '♟', '☹'] * 2
 state = {'mark': None}
 hide = [True] * 64
 state = {'mark': None, 'taps': 0}  # Añadir contador de taps aquí
@@ -74,14 +74,9 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        if tiles[mark] < 10:
-            goto(x + 14, y)
-            color('black')
-            write(tiles[mark], font=('Arial', 30, 'normal'))
-        else:
-            goto(x + 1, y)
-            color('black')
-            write(tiles[mark], font=('Arial', 30, 'normal'))
+        goto(x + 26, y - 6)
+        color('purple')
+        write(tiles[mark], align = "center", font=('Arial', 35, 'normal'))
 
     # Muestra el número de taps en la esquina superior derecha
     goto(160, 160)  # Ajusta la posición según sea necesario
