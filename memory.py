@@ -74,9 +74,14 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        goto(x + 2, y)
-        color('black')
-        write(tiles[mark], font=('Arial', 30, 'normal'))
+        if tiles[mark] < 10:
+            goto(x + 14, y)
+            color('black')
+            write(tiles[mark], font=('Arial', 30, 'normal'))
+        else:
+            goto(x + 1, y)
+            color('black')
+            write(tiles[mark], font=('Arial', 30, 'normal'))
 
     # Muestra el número de taps en la esquina superior derecha
     goto(160, 160)  # Ajusta la posición según sea necesario
